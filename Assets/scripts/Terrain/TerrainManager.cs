@@ -12,10 +12,14 @@ namespace Ski {
     private Vector3 clearPoint;
     private Transform dynamicObstacles;
 
-    public float speed = 13.0f;
+    private float speed;
 
     public float minObstacleDistance = 5.0f;
     private float deltaObstacleDistance = 0.0f;
+
+    void Awake() {
+      speed = Player.getInstance().speed;
+    }
 
     void Start() {
       dynamicObstacles = transform.Find("DynamicTerrain");

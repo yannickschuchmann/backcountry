@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+	public static Player instance = null;
+
+	public float speed = 20.0f;
+
 	public float lifetime = 2f;
 	public float minimumVertexDistance = 0.1f;
-	public Vector3 velocity = new Vector3(0, 0, -20);
+	public Vector3 velocity;
   private float movement = 0.0f;
 
   private LineRenderer line;
@@ -14,10 +18,23 @@ public class Player : MonoBehaviour {
 
 	private Vector3 offset = new Vector3(0, 0.05f, 0);
 
+	public static Player getInstance() {
+		return instance;
+	}
+
   void Awake() {
     line = transform.Find("Line").GetComponent<LineRenderer>();
     points = new List<Vector3>() { transform.position + offset };
     line.SetPositions(points.ToArray());
+
+		if (instance == null) {
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);
+			DontDestroyOnLoad(gameObject);
+		}
+
+		velocity = new Vector3(0, 0, -speed);
   }
 
   void Update() {
@@ -29,6 +46,7 @@ public class Player : MonoBehaviour {
     }
     transform.position += new Vector3(movement, 0, 0);
 
+		// trail related
     while (spawnTimes.Count > 0 && spawnTimes.Peek() + lifetime < Time.time) {
       RemovePoint();
     }
