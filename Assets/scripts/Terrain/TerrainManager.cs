@@ -18,16 +18,16 @@ namespace Ski {
     private float deltaObstacleDistance = 0.0f;
 
     void Awake() {
-      speed = Player.getInstance().speed;
-    }
-
-    void Start() {
       dynamicObstacles = transform.Find("DynamicTerrain");
       ground = transform.Find("Ground").gameObject;
       groundSize = ground.GetComponent<Renderer>().bounds.size;
       clearPoint = ground.transform.position + new Vector3(0, 0, groundSize.z / 2);
 
       initObstacleGenerator();
+    }
+
+    void Start() {
+      speed = Player.getInstance().speed;
     }
 
     void Update() {

@@ -149,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120842387}
   - component: {fileID: 120842388}
+  - component: {fileID: 120842389}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -182,9 +183,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da30f9fa57d14eee9c5da13574726de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
+--- !u!114 &120842389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120842386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cb08b30c3ab4336b168840f3716bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   lifetime: 2
-  minimumVertexDistance: 1
-  velocity: {x: 0, y: 0, z: -20}
+  minimumVertexDistance: 0.1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &134552850
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +379,6 @@ MonoBehaviour:
   obstacles:
   - prefab: {fileID: 1183023584991212, guid: e53eef99ed8a143efa513da222d79b43, type: 2}
   - prefab: {fileID: 1739509920341294, guid: 188d5ac7596914fc9b8b66da4a57977f, type: 2}
-  speed: 20
   minObstacleDistance: 0.1
 --- !u!4 &554682188
 Transform:
